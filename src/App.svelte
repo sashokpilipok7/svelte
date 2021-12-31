@@ -1,8 +1,10 @@
 <script>
 	import Square from './components/Square.svelte'
+	import Dashboard from './components/Dashboard.svelte'
 
 	export const author = 'Sasha Pylypenko!';
-	 let name = prompt('Enter your name please');
+	//  let name = prompt('Enter your name please');
+	 let name = 'Guest'
 
 
 	 const size = 5;
@@ -21,13 +23,13 @@
 </script>
 
 <main>
-	<section>
+	<section class="section">
 		<h1>Hello {name}!</h1>
 		<h2>The author is {author}</h2>
 		<img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" alt=""/>
 		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 	</section>
-	<section class="wrapper">
+	<section class="section section__playground">
 		{#each data as item, idx}
 		<div key={idx}>
 			{#each item as i, idx}
@@ -43,21 +45,29 @@
 		</div>
 		{/each}
 	</section>
+	<section class="section">
+		<Dashboard />
+	</section>
 </main>
 
-<style>
+<style lang="scss">
 	.section {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
 		height: 100vh;
-	}
-
-	.wrapper{
-		display: flex;
-		max-width: max-content;
-		margin: 20px auto;
+		&__playground{
+			display: flex;
+			max-width: max-content;
+			margin: 20px auto;
+		}
+		@media (min-width: 640px) {
+			max-width: none;
+			&__playground{
+				max-width: max-content;
+			}
+		}
 	}
 
 	h1 {
@@ -76,11 +86,5 @@
 	img{
 		margin: 20px auto;
 		width: 300px;
-	}
-
-	@media (min-width: 640px) {
-		.section {
-			max-width: none;
-		}
 	}
 </style>
