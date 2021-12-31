@@ -3,7 +3,7 @@
   import Dashboard from './components/Dashboard.svelte';
 
   export const author = 'Sasha Pylypenko!';
-  let name = prompt('Enter your name please' || 'Guest');
+  let name = prompt('Enter your name please') || 'Guest';
 
   const size = 5;
   let data = makeField(size);
